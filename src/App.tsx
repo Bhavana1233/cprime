@@ -9,64 +9,169 @@ the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTA
 OF ANY KIND, either express or implied. See the License for the specific language
 governing permissions and limitations under the License.
 */
+// import "./config1";
+import "./configs";
 import { IntlProvider } from "react-intl";
-import { mountingPoints } from "./config/config";
+import "./App.css";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faUserCircle} from "@fortawesome/free-solid-svg-icons";
+//import "./config/config";
+//import { mountingPoints } from "./config/config";
 import { AppContextProvider } from "./contextProviders";
 import {
-  ActiveFieldsContainter,
-  ALMSkillComponent,
-  ALMUserProfile,
   CommerceContextProvider,
-  Portal,
   PrimeCatalogContainer,
   PrimeCommunityBoardList,
   PrimeCommunityBoardPage,
   PrimeInstancePage,
   PrimeNotificationContainer,
   PrimeTrainingPage,
-} from "./almLib";
-import "./App.css";
+} from "./externalLib";
+import { ALMProfilePage } from "./externalLib/components/Profile/ALMProfilePage";
+import { Link, Route, Routes } from "react-router-dom";
+import { 
+  PRIME_ALMPROFILE,
+  PRIME_CATALOG,
+  PRIME_TRAINING,
+  PRIME_INSTANCE,
+  PRIME_BOARDPAGE,
+  PRIME_BOARDLIST,
+  BASE,
+} from "./config/config";
+import "./storage";
+import { useProfile } from "./externalLib/hooks";
+import { getALMObject } from "./externalLib/utils/global";
 
 const App = (props: any) => {
-  // const { mountingPoints } = config;
+  //let almConfig = getALMConfig();
+  //const { mountingPoints } = config;
   //store.subscribe(() => console.log(store.getState()));
+  const { profileAttributes } = useProfile();
+  const { user } = profileAttributes;
   return (
+   
     <IntlProvider locale={props.locale} messages={props.messages}>
       <div id="alertDialog"></div>
       <CommerceContextProvider>
         <AppContextProvider>
-          <Portal selector={mountingPoints.notificationContainer}>
-            <PrimeNotificationContainer />
-          </Portal>
-
-          <Portal selector={mountingPoints.catalogContainer}>
-            <PrimeCatalogContainer />
-          </Portal>
-          <Portal selector={mountingPoints.trainingOverviewPage}>
-            <PrimeTrainingPage />
-          </Portal>
-          <Portal selector={mountingPoints.instanceContainer}>
-            <PrimeInstancePage />
-          </Portal>
-          <Portal selector={mountingPoints.profilePageContainer}>
-            <ALMUserProfile />
-          </Portal>
-          <Portal selector={mountingPoints.userSkillsContainer}>
-            <ALMSkillComponent />
-          </Portal>
-          <Portal selector={mountingPoints.activeFieldsContainer}>
-            <ActiveFieldsContainter />
-          </Portal>
-          <Portal selector={mountingPoints.boardContainer}>
-            <PrimeCommunityBoardPage />
-          </Portal>
-          <Portal selector={mountingPoints.boardsContainer}>
-            <PrimeCommunityBoardList />
-          </Portal>
+          {/* <div className="header">
+          <div className="mx-auto"> */}
+            {/* <div className="logo-image">
+              <img src="https://iconape.com/wp-content/png_logo_vector/iconfinder-2.png"
+              className="img-fluid"
+              height="70"/>
+            </div> */}
+            <nav className="navigation">
+              <div className="logo-image">
+                <img src="https://iconape.com/wp-content/png_logo_vector/iconfinder-2.png"
+                className="img-fluid"
+                height="70"/>
+              </div>
+              <ul className="content">
+                <li className="list">
+                  <Link to={PRIME_CATALOG}  className="home">HOME</Link>
+                </li>
+                {getALMObject().isPrimeUserLoggedIn()?(
+                  <>
+                    <Link to={PRIME_BOARDLIST} className="community">COMMUNITY</Link>
+                    <li className="notify">
+                   <PrimeNotificationContainer/>
+                   </li>
+                    <div>
+                      <Link to={PRIME_ALMPROFILE}>
+                      <img src={user.avatarUrl}
+                      alt="profile"
+                      className="user"  height="40" width="40"/>
+                     </Link>
+                    </div>
+                 </>
+                ):""}
+                {!getALMObject().isPrimeUserLoggedIn()?( 
+                //   <li className="list">
+                //     <div>
+                //       <Link to={PRIME_ALMPROFILE}>
+                //       <img src={user.avatarUrl}
+                //       alt="profile"
+                //       className="user"  height="40" width="40"/>
+                //       </Link>
+                //     </div>
+                //   </li>
+                // ):(<li className="list"> */}
+                  <div>
+                    <Link to={PRIME_ALMPROFILE}>
+                      {/* TO-DO--->change image path 
+                      src="https://images.rawpixel.com/image_social_square/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy
+                    93ZWJzaXRlX2NvbnRlbnQvbHIvcGYtaWNvbjQtamlyMjA2NC1wb3ItbC5qcGc.jpg?s=H3a8GUP1lDJmSxxLyi_281z9OCRp4n6bpGYGf6FaDnw"*/}
+                    {/* <img 
+                     src="src/images1/download.jpeg"
+                     alt="profile"
+                    className="user" height="40" width="40"/> */}
+                    <FontAwesomeIcon className="icons" icon={faUserCircle} size={"2x"}></FontAwesomeIcon>
+                   
+                    </Link>
+                  </div>
+                ):""}
+              </ul>
+            </nav>
+          {/* </div>
+          </div> */}
+       <Routes>
+            <Route path={BASE} element={<PrimeCatalogContainer/>} />
+            <Route path={PRIME_CATALOG} element={<PrimeCatalogContainer />} />
+            <Route path={PRIME_TRAINING} element={<PrimeTrainingPage />} />
+            <Route path={PRIME_INSTANCE} element={<PrimeInstancePage />} />
+            <Route path={PRIME_ALMPROFILE} element={<ALMProfilePage />} />
+            <Route 
+              path={PRIME_BOARDPAGE}
+              element={<PrimeCommunityBoardPage />}
+            />
+            <Route
+              path={PRIME_BOARDLIST}
+              element={<PrimeCommunityBoardList />}
+            />
+        </Routes>
         </AppContextProvider>
       </CommerceContextProvider>
     </IntlProvider>
+
+    //  <IntlProvider locale={props.locale} messages={props.messages}>
+    // <div id="alertDialog"></div>
+    // <CommerceContextProvider>
+    //   <AppContextProvider>
+
+    //     <Portal selector={mountingPoints.notificationContainer}>
+    //       <PrimeNotificationContainer />
+    //     </Portal>
+
+    //     <Portal selector={mountingPoints.catalogContainer}>
+    //       <PrimeCatalogContainer />
+    //     </Portal>
+
+    //     <Portal selector={mountingPoints.trainingOverviewPage}>
+    //       <PrimeTrainingPage />
+    //     </Portal>
+
+    //     <Portal selector={mountingPoints.instanceContainer}>
+    //       <PrimeInstancePage />
+    //     </Portal>
+
+    //      <Portal selector={mountingPoints.profilePageContainer}>
+    //       <ALMProfilePage />
+    //     </Portal>
+
+    //      <Portal selector={mountingPoints.boardContainer}>
+    //        <PrimeCommunityBoardPage />
+    //      </Portal>
+
+    //    <Portal selector={mountingPoints.boardsContainer}>
+    //       <PrimeCommunityBoardList />
+    //     </Portal>
+
+    //   </AppContextProvider>
+    // </CommerceContextProvider>
+    // </IntlProvider>
   );
 };
 
 export default App;
+
