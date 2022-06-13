@@ -4,3 +4,6 @@
 [submodule "almLib"]
 	path = almLib
 	url = git@github.com:Bhavana1233/almLib.git
+[submodule "PrimeIntegerations"]
+	path = PrimeIntegerations
+	url = git@github.com:Bhavana1233/PrimeIntegerations.git
