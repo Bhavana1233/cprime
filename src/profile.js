@@ -1,5 +1,5 @@
 
-import { ALMProfilePage } from "./externalLib/components/Profile/ALMProfilePage"
+import { ALMProfilePage } from "./almLib/components/Profile/ALMProfilePage"
 export default class Profile{
     render(){
         return(

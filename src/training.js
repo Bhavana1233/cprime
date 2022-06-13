@@ -1,5 +1,5 @@
 
-import { PrimeTrainingPage } from "./externalLib"
+import { PrimeTrainingPage } from "./almLib"
 export default class Training{
     render(){
         return(

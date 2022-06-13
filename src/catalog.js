@@ -1,5 +1,5 @@
 import React from "react";
-import { PrimeCatalogContainer } from "./externalLib";
+import { PrimeCatalogContainer } from "./almLib";
  const Catalog=()=>{
     return(
         <div

@@ -10,7 +10,7 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 // import "./config1";
-import "./configs";
+import "./config1";
 import { IntlProvider } from "react-intl";
 import "./App.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -26,8 +26,8 @@ import {
   PrimeInstancePage,
   PrimeNotificationContainer,
   PrimeTrainingPage,
-} from "./externalLib";
-import { ALMProfilePage } from "./externalLib/components/Profile/ALMProfilePage";
+} from "./almLib";
+import { ALMProfilePage } from "./almLib/components/Profile/ALMProfilePage";
 import { Link, Route, Routes } from "react-router-dom";
 import { 
   PRIME_ALMPROFILE,
@@ -39,8 +39,8 @@ import {
   BASE,
 } from "./config/config";
 import "./storage";
-import { useProfile } from "./externalLib/hooks";
-import { getALMObject } from "./externalLib/utils/global";
+import { useProfile } from "./almLib/hooks";
+import { getALMObject } from "./almLib/utils/global";
 
 const App = (props: any) => {
   //let almConfig = getALMConfig();

@@ -1,4 +1,4 @@
-import {getWindowObject} from './externalLib/utils/global';
+import {getWindowObject} from './almLib/utils/global';
 let window=getWindowObject();
       class NamespacedLocalStorage {
         localStorage:any;
