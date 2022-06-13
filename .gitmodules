@@ -1,6 +1,3 @@
-[submodule "subprime"]
-	path = subprime
-	url = git@github.com:Bhavana1233/subprime.git
 [submodule "almLib"]
 	path = almLib
 	url = git@github.com:Bhavana1233/almLib.git
