@@ -1,1 +1,4 @@
 
+[submodule "src/ui.frontend/src/almLib"]
+	path = src/ui.frontend/src/almLib
+	url = git@github.com:Bhavana1233/adobe-learning.git
