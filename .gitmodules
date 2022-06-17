@@ -3,3 +3,6 @@
 	path = src/ui.frontend/src/almLib
 	url = git@github.com:Bhavana1233/adobe-learning.git
 
+[submodule "src/--force"]
+	path = src/--force
+	url = git@github.com:Bhavana1233/almLib.git
