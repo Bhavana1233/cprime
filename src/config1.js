@@ -42,7 +42,7 @@ const ALMConfig = {
       };
 
       const getAccessToken = () => {
-        return "7c8bd5d1dbb88c0235a3a95d8c4742f6";
+        return "3f2c3253f9db6a36bb5a6f4739425345";
       };
       const COMMERCE_TOKEN_COOKIE_NAME = "alm_commerce_token";
 

@@ -1,4 +1,4 @@
-import { getWindowObject } from "./almLib/utils/global";
+import { getWindowObject } from "../almLib/almlib/utils/global";
 let window=getWindowObject();
 const PRIME_USAGE_TYPE = "aem-sites";
   const ES_USAGE_TYPE = "aem-es";

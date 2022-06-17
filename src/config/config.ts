@@ -13,7 +13,8 @@ governing permissions and limitations under the License.
 
 // eslint-disable-next-line import/no-anonymous-default-export
 
-import { getALMConfig } from "../almLib/utils/global";
+// import { getALMConfig } from "./almLib/almLib/utils/global";
+import { getALMConfig } from "../../almLib/almlib/utils/global";
 let almConfig = getALMConfig();
 
 const mountingPoints = {

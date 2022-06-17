@@ -10,6 +10,7 @@ OF ANY KIND, either express or implied. See the License for the specific languag
 governing permissions and limitations under the License.
 */
 // import "./config1";
+
 import "./config1";
 import { IntlProvider } from "react-intl";
 import "./App.css";
@@ -26,8 +27,7 @@ import {
   PrimeInstancePage,
   PrimeNotificationContainer,
   PrimeTrainingPage,
-} from "./almLib";
-import { ALMProfilePage } from "./almLib/components/Profile/ALMProfilePage";
+} from "../almLib/almlib";
 import { Link, Route, Routes } from "react-router-dom";
 import { 
   PRIME_ALMPROFILE,
@@ -39,9 +39,12 @@ import {
   BASE,
 } from "./config/config";
 import "./storage";
-import { useProfile } from "./almLib/hooks";
-import { getALMObject } from "./almLib/utils/global";
-
+import { useProfile } from "../almLib/almlib/hooks/profile/useProfile";
+import { getALMObject } from "../almLib/almlib/utils/global";
+import Catalog from "./components/catalog";
+import Training from "./components/training";
+import Profile from "./components/profile";
+//import { ALMProfilePage } from "../almLib/almLib";
 const App = (props: any) => {
   //let almConfig = getALMConfig();
   //const { mountingPoints } = config;
@@ -116,11 +119,11 @@ const App = (props: any) => {
           {/* </div>
           </div> */}
        <Routes>
-            <Route path={BASE} element={<PrimeCatalogContainer/>} />
-            <Route path={PRIME_CATALOG} element={<PrimeCatalogContainer />} />
-            <Route path={PRIME_TRAINING} element={<PrimeTrainingPage />} />
+            <Route path={BASE} element={<Catalog/>} />
+            <Route path={PRIME_CATALOG} element={<Catalog />} />
+            <Route path={PRIME_TRAINING} element={<Training />} />
             <Route path={PRIME_INSTANCE} element={<PrimeInstancePage />} />
-            <Route path={PRIME_ALMPROFILE} element={<ALMProfilePage />} />
+            <Route path={PRIME_ALMPROFILE} element={<Profile />} /> 
             <Route 
               path={PRIME_BOARDPAGE}
               element={<PrimeCommunityBoardPage />}
