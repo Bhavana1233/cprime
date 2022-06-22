@@ -1,4 +1,4 @@
-import { PrimeCatalogContainer } from "./../Components-almLib/components/Catalog/PrimeCatalogContainer";
+import  PrimeCatalogContainer  from "./../adobe-learning-manager-components/ui.frontend/src/almLib/components/Catalog/PrimeCatalogContainer/PrimeCatalogContainer";
   const Catalog = () => {
     return(
         <div

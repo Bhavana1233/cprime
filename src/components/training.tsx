@@ -1,4 +1,4 @@
-import { PrimeTrainingPage } from "./../Components-almLib/components/TrainingOverview/PrimeTrainingPage";
+import { PrimeTrainingPage } from "../adobe-learning-manager-components/ui.frontend/src/almLib";
 
 const Training = () => {
     return (

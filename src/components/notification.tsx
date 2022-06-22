@@ -1,4 +1,4 @@
-import { PrimeNotificationContainer } from "../Components-almLib";
+import { PrimeNotificationContainer } from "../adobe-learning-manager-components/ui.frontend/src/almLib";
 
   const Notification = () => {
     return(

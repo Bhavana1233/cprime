@@ -1,4 +1,4 @@
-import ActiveFieldsContainter from "../Components-almLib/components/ActiveFields/ActiveFieldsContainer";
+import ActiveFieldsContainter from "../adobe-learning-manager-components/ui.frontend/src/almLib/components/ActiveFields/ActiveFieldsContainter";
 
 const ActiveFields = () =>{
     return(

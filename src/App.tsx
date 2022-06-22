@@ -11,7 +11,7 @@ governing permissions and limitations under the License.
 */
 // import "./config1";
 
-import "./configs";
+import "./config1";
 import { IntlProvider } from "react-intl";
 import "./App.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -27,7 +27,7 @@ import {
   PrimeInstancePage,
   PrimeNotificationContainer,
   PrimeTrainingPage,
-} from "./Components-almLib";
+} from "./adobe-learning-manager-components/ui.frontend/src/almLib";
 import { Link, Route, Routes } from "react-router-dom";
 import { 
   PRIME_ALMPROFILE,
@@ -41,8 +41,8 @@ import {
   PRIME_USERSKILL,
 } from "./config/config";
 import "./storage";
-import { useProfile } from "./Components-almLib/hooks/profile/useProfile";
-import { getALMObject } from "./Components-almLib/utils/global";
+import { useProfile } from "./adobe-learning-manager-components/ui.frontend/src/almLib/hooks/profile/useProfile";
+import { getALMObject } from "./adobe-learning-manager-components/ui.frontend/src/almLib/utils/global";
 import Catalog from "./components/catalog";
 import Notification from "./components/notification";
 import Training from "./components/training";

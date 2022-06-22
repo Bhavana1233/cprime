@@ -1,6 +1,6 @@
-import ActiveFieldsContainter from "../Components-almLib/components/ActiveFields/ActiveFieldsContainer";
-import { ALMSkillComponent } from "../Components-almLib/components/ALMSkills";
-import ALMUserProfile from "../Components-almLib/components/Profile/ALMUserProfile/ALMUserProfile";
+import { ActiveFieldsContainter } from "../adobe-learning-manager-components/ui.frontend/src/almLib";
+import { ALMSkillComponent } from "../adobe-learning-manager-components/ui.frontend/src/almLib";
+import { ALMUserProfile } from "../adobe-learning-manager-components/ui.frontend/src/almLib";
 
 const Profile = () =>{
   return(

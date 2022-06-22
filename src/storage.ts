@@ -1,4 +1,4 @@
-import {getWindowObject} from './Components-almLib/utils/global';
+import {getWindowObject} from './adobe-learning-manager-components/ui.frontend/src/almLib/utils/global';
 let window=getWindowObject();
       class NamespacedLocalStorage {
         localStorage:any;

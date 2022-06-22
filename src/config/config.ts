@@ -14,7 +14,7 @@ governing permissions and limitations under the License.
 // eslint-disable-next-line import/no-anonymous-default-export
 
 // import { getALMConfig } from "./almLib/almLib/utils/global";
-import { getALMConfig } from "./../Components-almLib/utils/global";
+import { getALMConfig } from "./../adobe-learning-manager-components/ui.frontend/src/almLib/utils/global";
 let almConfig = getALMConfig();
 
 const mountingPoints = {
