@@ -11,7 +11,7 @@ governing permissions and limitations under the License.
 */
 // import "./config1";
 
-import "./config1";
+import "./configs";
 import { IntlProvider } from "react-intl";
 import "./App.css";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -27,7 +27,7 @@ import {
   PrimeInstancePage,
   PrimeNotificationContainer,
   PrimeTrainingPage,
-} from "./--force";
+} from "./Components-almLib";
 import { Link, Route, Routes } from "react-router-dom";
 import { 
   PRIME_ALMPROFILE,
@@ -37,12 +37,18 @@ import {
   PRIME_BOARDPAGE,
   PRIME_BOARDLIST,
   BASE,
+  PRIME_ACTIVEFIELDS,
+  PRIME_USERSKILL,
 } from "./config/config";
 import "./storage";
-import { useProfile } from "./--force/hooks/profile/useProfile";
-import { getALMObject } from "./--force/utils/global";
+import { useProfile } from "./Components-almLib/hooks/profile/useProfile";
+import { getALMObject } from "./Components-almLib/utils/global";
 import Catalog from "./components/catalog";
+import Notification from "./components/notification";
 import Training from "./components/training";
+import Profile from "./components/profile";
+import ActiveFields from "./components/activefields";
+import ALMskill from "./components/almskill";
 // import Profile from "./components/profile";
 //import { ALMProfilePage } from "../almLib/almLib";
 const App = (props: any) => {
@@ -71,35 +77,27 @@ const App = (props: any) => {
                 height="70"/>
               </div>
               <ul className="content">
-                <li className="list">
+                <>
                   <Link to={PRIME_CATALOG}  className="home">HOME</Link>
-                </li>
+                  </>
                 {getALMObject().isPrimeUserLoggedIn()?(
                   <>
                     <Link to={PRIME_BOARDLIST} className="community">COMMUNITY</Link>
                     <li className="notify">
-                   <PrimeNotificationContainer/>
+                   <Notification/>
                    </li>
+                   <li>
+                     <Link to={PRIME_ALMPROFILE}>
                     <div>
-                      <Link to={PRIME_ALMPROFILE}>
                       <img src={user.avatarUrl}
                       alt="profile"
-                      className="user"  height="40" width="40"/>
-                     </Link>
+                      className="user"  height="40" width="100"/>
                     </div>
-                 </>
+                    </Link>
+                    </li>  
+                         </>
                 ):""}
                 {!getALMObject().isPrimeUserLoggedIn()?( 
-                //   <li className="list">
-                //     <div>
-                //       <Link to={PRIME_ALMPROFILE}>
-                //       <img src={user.avatarUrl}
-                //       alt="profile"
-                //       className="user"  height="40" width="40"/>
-                //       </Link>
-                //     </div>
-                //   </li>
-                // ):(<li className="list"> */}
                   <div>
                     <Link to={PRIME_ALMPROFILE}>
                       {/* TO-DO--->change image path 
@@ -115,15 +113,20 @@ const App = (props: any) => {
                   </div>
                 ):""}
               </ul>
+            
             </nav>
           {/* </div>
           </div> */}
+      
        <Routes>
-            <Route path={BASE} element={<Catalog/>} />
-            <Route path={PRIME_CATALOG} element={<Catalog />} />
+            {/* <Route path={BASE} element={<PrimeCatalogContainer/>} /> */}
+            <Route path={BASE} element={<Catalog/>}/>
+            <Route path={PRIME_CATALOG} element={<Catalog/>} />
             <Route path={PRIME_TRAINING} element={<Training />} />
             <Route path={PRIME_INSTANCE} element={<PrimeInstancePage />} />
-            {/* <Route path={PRIME_ALMPROFILE} element={<Profile />} />  */}
+            <Route path={PRIME_ALMPROFILE} element={<Profile />} />
+            <Route path={PRIME_ACTIVEFIELDS} element={<ActiveFields/>}/>
+             <Route path={PRIME_USERSKILL} element={<ALMskill/>}/> 
             <Route 
               path={PRIME_BOARDPAGE}
               element={<PrimeCommunityBoardPage />}

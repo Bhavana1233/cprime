@@ -1,4 +1,4 @@
-import { PrimeTrainingPage } from "./../--force/components/TrainingOverview/PrimeTrainingPage";
+import { PrimeTrainingPage } from "./../Components-almLib/components/TrainingOverview/PrimeTrainingPage";
 
 const Training = () => {
     return (

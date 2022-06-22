@@ -1,9 +1,12 @@
-import { getWindowObject } from "./--force/utils/global";
-let window=getWindowObject();
+export {}
+// declare const window: Window &
+//    typeof globalThis & {
+//      ALM: any
+//    }
+declare const window:any;
 const PRIME_USAGE_TYPE = "aem-sites";
   const ES_USAGE_TYPE = "aem-es";
   const COMMERCE_USAGE_TYPE = "aem-commerce";
- 
 const ALMConfig = {
         almBaseURL: "https://captivateprimeqe.adobe.com",
         primeApiURL: "https://captivateprimeqe.adobe.com/primeapi/v2/",
@@ -42,9 +45,9 @@ const ALMConfig = {
       const isPrimeUserLoggedIn = () => {
         return true;
       };
-
+      
       const getAccessToken = () => {
-        return "102eb138400801213414a4c4ab2e0aa3";
+        return "2d82308ba79912b33234f6ed346569d7";
       };
       const COMMERCE_TOKEN_COOKIE_NAME = "alm_commerce_token";
 
@@ -54,9 +57,10 @@ const ALMConfig = {
         );
         return cookieValues ? cookieValues.pop() : "";
       };
-
+      // console.log("hi");
+      let ALM=window.ALM;
       const getALMConfig = () => {
-        return window.ALM.ALMConfig;
+        return ALM.ALMConfig;
       };
 
       const navigateToTrainingOverviewPage = (
@@ -102,17 +106,17 @@ const ALMConfig = {
       };
 
       async function getALMUser() {
-        if (!window.ALM.isPrimeUserLoggedIn()) {
-          window.ALM.storage.removeItem("user");
+        if (!ALM.isPrimeUserLoggedIn()) {
+          ALM.storage.removeItem("user");
           return;
         }
 
-        let user = window.ALM.storage.getItem("user");
+        let user = ALM.storage.getItem("user");
         if (user) {
           return user;
         }
         console.log("Fetch user");
-        const primeApiURL = window.ALM.ALMConfig.primeApiURL;
+        const primeApiURL = ALM.ALMConfig.primeApiURL;
         const userUrl = `${primeApiURL}/user?include=account`;
         const headers = {
           Accept: "application/vnd.api+json",
@@ -124,25 +128,25 @@ const ALMConfig = {
             headers,
             method: "GET",
           });
-          if (userResponse && userResponse.status == 200) {
+          if (userResponse && userResponse.status === 200) {
             user = await userResponse.json();
             const userStr = JSON.stringify(user);
             console.log("set user");
-            window.ALM.storage.setItem("user", userStr, 1800);
+            ALM.storage.setItem("user", userStr, 1800);
             return userStr;
           } else {
             console.error("User call failed!!");
-            window.ALM.storage.removeItem("user");
+            ALM.storage.removeItem("user");
           }
         } catch (e) {
-          window.ALM.storage.removeItem("user");
+          ALM.storage.removeItem("user");
           console.log("Fetch user exception " + e);
           throw e;
         }
       }
 
       const updateALMUser = async () => {
-        window.ALM.storage.removeItem("user");
+        ALM.storage.removeItem("user");
         return getALMUser();
       };
 
@@ -209,7 +213,7 @@ const ALMConfig = {
 
       const navigateToCommerceSignInPage = () => {
         let { commerceSignInPath } = getALMConfig();
-        window.location =
+        window.location.pathname =
           commerceSignInPath +
           "?redirectPath=" +
           encodeURIComponent(window.location.pathname);
@@ -230,7 +234,7 @@ const ALMConfig = {
             break;
 
           case COMMERCE_USAGE_TYPE:
-            window.ALM.navigateToCommerceSignInPage();
+            ALM.navigateToCommerceSignInPage();
             break;
 
           default:
@@ -238,29 +242,28 @@ const ALMConfig = {
         }
       }
 
-      window.ALM = window.ALM || {};
-      window.ALM.ALMConfig = ALMConfig; //window.ALM.ALMConfig || primeConfig;
-      window.ALM.getALMConfig = getALMConfig;
-      window.ALM.handleLogIn = handleLogIn;
-      window.ALM.navigateToTrainingOverviewPage =
+      ALM = ALM || {};
+      ALM.ALMConfig = ALMConfig; //window.ALM.ALMConfig || primeConfig;
+     ALM.getALMConfig = getALMConfig;
+      ALM.handleLogIn = handleLogIn;
+      ALM.navigateToTrainingOverviewPage =
         navigateToTrainingOverviewPage;
-      window.ALM.navigateToInstancePage = navigateToInstancePage;
-      window.ALM.navigateToBoardDetailsPage = navigateToBoardDetailsPage;
-      window.ALM.navigateToCommerceSignInPage = navigateToCommerceSignInPage;
-      window.ALM.isPrimeUserLoggedIn = isPrimeUserLoggedIn;
-      window.ALM.getAccessToken = getAccessToken;
-      window.ALM.getCommerceToken = getCommerceToken;
-      window.ALM.getALMUser = getALMUser;
-      window.ALM.getAccountActiveFields = getAccountActiveFields;
-      window.ALM.updateAccountActiveFieldsDetails =
+      ALM.navigateToInstancePage = navigateToInstancePage;
+      ALM.navigateToBoardDetailsPage = navigateToBoardDetailsPage;
+      ALM.navigateToCommerceSignInPage = navigateToCommerceSignInPage;
+      ALM.isPrimeUserLoggedIn = isPrimeUserLoggedIn;
+      ALM.getAccessToken = getAccessToken;
+      ALM.getCommerceToken = getCommerceToken;
+     ALM.getALMUser = getALMUser;
+      ALM.getAccountActiveFields = getAccountActiveFields;
+      ALM.updateAccountActiveFieldsDetails =
         updateAccountActiveFieldsDetails;
-      window.ALM.updateALMUser = updateALMUser;
+      ALM.updateALMUser = updateALMUser;
       
-      window.ALM.updateCart = function (value:any) {
+      ALM.updateCart = function (value:any) {
         console.log(value);
       };
-      const CURRENT_USAGE_TYPE = window.ALM.ALMConfig.usageType || PRIME_USAGE_TYPE;
+      const CURRENT_USAGE_TYPE = ALM.ALMConfig.usageType || PRIME_USAGE_TYPE;
       if (isPrimeUserLoggedIn()) {
         getALMUser();
       }
-    

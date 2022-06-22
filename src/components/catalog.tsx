@@ -1,4 +1,4 @@
-import { PrimeCatalogContainer } from "./../--force/components/Catalog/PrimeCatalogContainer";
+import { PrimeCatalogContainer } from "./../Components-almLib/components/Catalog/PrimeCatalogContainer";
   const Catalog = () => {
     return(
         <div

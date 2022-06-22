@@ -14,7 +14,7 @@ governing permissions and limitations under the License.
 // eslint-disable-next-line import/no-anonymous-default-export
 
 // import { getALMConfig } from "./almLib/almLib/utils/global";
-import { getALMConfig } from "./../--force/utils/global";
+import { getALMConfig } from "./../Components-almLib/utils/global";
 let almConfig = getALMConfig();
 
 const mountingPoints = {
@@ -25,6 +25,8 @@ const mountingPoints = {
   notificationContainer: ".notification__container",
   instanceContainer: ".instance__container",
   profilePageContainer: ".profile__container",
+  userSkillsContainer: ".skills__container",
+  activeFieldsContainer: ".activeFields__container",
 };
 (window as any).ALM = (window as any).ALM || {};
 (window as any).ALM.ALMConfig["mountingPoints"] = mountingPoints;
@@ -35,6 +37,8 @@ export const PRIME_CATALOG = `${almConfig.catalogPath}`;
 export const PRIME_TRAINING = `${almConfig.trainingOverviewPath}/trainingId/:trainingId/trainingInstanceId/:trainingInstanceId`;
 export const PRIME_INSTANCE = `${almConfig.instancePath}/trainingId/:trainingId`;
 export const PRIME_ALMPROFILE = "/profilePage";
+export const PRIME_ACTIVEFIELDS = "/activeFields";
+export const PRIME_USERSKILL = "/userSkills";
 export const PRIME_BOARDPAGE = `${almConfig.communityBoardsPath}/boardId/:boardId`;
 export const PRIME_BOARDLIST = `${almConfig.communityBoardDetailsPath}`;
 
