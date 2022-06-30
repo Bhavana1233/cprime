@@ -3,7 +3,7 @@ import  PrimeCatalogContainer  from "./../adobe-learning-manager-components/ui.f
     return(
         <div
         className="catalog__container"
-        data-show-filters="true"
+        data-show-filters="false"
         data-show-search="true"
         data-catalogs="true"
         data-lo-types="true"

@@ -9,7 +9,7 @@
   display:flex;
   align-items:center;
   padding:0px 10px;
-  height:65px;
+  height:55px;
   /* border-bottom:2px double rgb(0,0,0); */
   background-color: #eee;
   flex-direction: row;
@@ -17,16 +17,15 @@
 }
 .user{
   padding-right: -400px;
-  margin-right:-50px;
-  margin-left: 180px;
-  width:50px
+  margin-right:100px;
+  margin-left: 108px;
+  width:50px;
+  height:45px;
+  border-radius: 50%;
 }
 .img-fluid{
   padding-left: 200px;
   margin-left: 70px;
-}
-img{
-  border-radius: 50%;
 }
 .list{
   display:inline-flexbox;
@@ -41,8 +40,8 @@ img{
 .home{
   text-decoration-line: none;
   color: black;
-  /* margin-right: 200px; */
-  margin-left: -1px;
+  margin-right: -200px;
+  margin-left: -240px;
   /* font-family: Helvetica, sans-serif; */
   font-family:  Arial, Helvetica, sans-serif;
   font-weight:200 ;
@@ -58,15 +57,16 @@ img{
   color: black;
   font-style: inherit;
   padding-right: 250px;
-  margin-left: 100px;
+  margin-left: -190px;
   font-family:  Arial, Helvetica, sans-serif;
   font-weight:200 ;
   margin-top: 15px;
-  margin-right: -200px;
+  margin-right: 75px;
 }
 .notify{
-  margin-left: -3px;
-  margin-right: 10px;
+  margin-left: 260px;
+  margin-right: -154px;
+  margin-top: 1px;
 }
 .content{
   padding-left:300px;
