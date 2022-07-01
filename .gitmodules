@@ -1,7 +1,5 @@
 
-[submodule "src/Components-almLib"]
-	path = src/Components-almLib
-	url = git@github.com:Bhavana1233/Components-almLib.git
+
 [submodule "src/adobe-learning-manager-components"]
 	path = src/adobe-learning-manager-components
 	url = git@git.corp.adobe.com:CP-PrimeIntegrations/adobe-learning-manager-components.git
